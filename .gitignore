@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+data/telegram-bot-*.json
+data/telegram-cloud-db.json
+data/telegram-media-cache/

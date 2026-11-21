@@ -1,0 +1,8 @@
+{
+  "name": "Remix سامانه کارگاهی تولید ورمیکمپوست درجه ۱ صادراتی و گلخانه‌ای",
+  "description": "سامانه جامع فروشگاه تولیدی و زیست فناوری مهندس صفری",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

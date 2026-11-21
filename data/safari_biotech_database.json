@@ -1,0 +1,123 @@
+{
+  "settings": {
+    "workshopName": "گروه تولیدی و زیست فناوری مهندس صفری",
+    "supportPhone": "۰۹۱۲۰۰۰۰۰۰۳",
+    "agronomistName": "مهندس صفری",
+    "agronomistPhone": "۰۹۱۲۰۰۰۰۰۰۳",
+    "agronomistTitle": "مشاور ارشد باغبانی و تغذیه خاک",
+    "adminUsername": "Vafaii",
+    "adminPassword": "1366A14953",
+    "minOrderNotice": "امکان ارسال مستقیم از کارگاه با باربری بین‌شهری و وانت اختصاصی به سراسر کشور",
+    "databaseFilePath": "/app/applet/data/safari_biotech_database.json",
+    "lastSyncedAt": "۱۴۰۳/۰۸/۱۹",
+    "autoRealtimeSync": true
+  },
+  "productOverrides": {
+    "prod-vermicompost-grade-a": {
+      "stockQuantity": 499
+    }
+  },
+  "orders": [
+    {
+      "orderNumber": "ORD-1403-1082",
+      "orderDate": "۱۴۰۳/۰۸/۱۸",
+      "customerId": "usr-cust-karimi",
+      "customerName": "حاج رضا کریمی",
+      "phoneNumber": "09123456789",
+      "province": "کرمان",
+      "city": "رفسنجان",
+      "deliveryAddress": "جاده نوق، بعد از دهستان احمدآباد، مجتمع باغات رضوی، قطعه ۴",
+      "farmingType": "orchard",
+      "deliveryMethod": "truck_dedicated",
+      "items": [
+        {
+          "id": "prod-vermicompost-grade-a-vermi-pkg-25kg",
+          "product": {
+            "id": "prod-vermicompost-grade-a",
+            "name": "ورمیکمپوست درجه ۱ صادراتی و گلخانه‌ای (Bio-Grade A)",
+            "category": "vermicompost",
+            "categoryLabel": "بیوکود تخصصی",
+            "tagline": "تولید شده با کرم ایزینیا فوتیدا و ترشحات کلسیمی",
+            "description": "",
+            "highlights": [],
+            "specs": [],
+            "packagingOptions": [],
+            "rating": 4.9,
+            "reviewCount": 142,
+            "deliveryTimeDays": "۱ الی ۳ روز کاری",
+            "colorScheme": "emerald",
+            "inStock": true,
+            "stockQuantity": 450,
+            "stockUnit": "کیسه"
+          },
+          "selectedPackage": {
+            "id": "vermi-pkg-25kg",
+            "title": "کیسه ۲۵ کیلوگرمی استاندارد",
+            "weightOrVolume": "۲۵ کیلوگرم",
+            "nominalWeightKg": 25,
+            "priceToman": 600000
+          },
+          "quantity": 80,
+          "unitPrice": 600000,
+          "totalPrice": 48000000
+        },
+        {
+          "id": "prod-zeolite-sugar-mesh-zeo-pkg-25kg",
+          "product": {
+            "id": "prod-zeolite-sugar-mesh",
+            "name": "زئولیت کشاورزی شکری اصلاح‌کننده خاک",
+            "category": "mineral",
+            "categoryLabel": "مکمل معدنی اصلاح خاک",
+            "tagline": "تثبیت ازت و آمونیاک، کاهش شوری EC",
+            "description": "",
+            "highlights": [],
+            "specs": [],
+            "packagingOptions": [],
+            "rating": 4.85,
+            "reviewCount": 64,
+            "deliveryTimeDays": "۱ الی ۲ روز کاری",
+            "colorScheme": "purple",
+            "inStock": true,
+            "stockQuantity": 310,
+            "stockUnit": "کیسه"
+          },
+          "selectedPackage": {
+            "id": "zeo-pkg-25kg",
+            "title": "کیسه ۲۵ کیلوگرمی شکری",
+            "weightOrVolume": "۲۵ کیلوگرم",
+            "nominalWeightKg": 25,
+            "priceToman": 150000
+          },
+          "quantity": 20,
+          "unitPrice": 150000,
+          "totalPrice": 3000000
+        }
+      ],
+      "totalWeightKg": 2500,
+      "subtotalToman": 51000000,
+      "discountToman": 1500000,
+      "shippingEstimateToman": 2800000,
+      "finalPayableToman": 52300000,
+      "status": "confirmed",
+      "adminNotes": "هماهنگ شد با باربری رفسنجان. پیش‌پرداخت دریافت شد.",
+      "trackingNumber": "TRK-98214-RFZ",
+      "updatedAt": "۱۴۰۳/۰۸/۱۹"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr-admin-vafaii",
+      "username": "Vafaii",
+      "phoneNumber": "09120000003",
+      "password": "1366A14953",
+      "fullName": "مدیریت کارگاه و فروشگاه (مهندس وفایی / صفری)",
+      "role": "admin",
+      "province": "تهران",
+      "city": "تهران / فیروزکوه",
+      "address": "کیلومتر ۲۵ جاده صنعتی، مجتمع زیست‌فناوری صفری",
+      "createdAt": "۱۴۰۳/۰۱/۰۱"
+    }
+  ],
+  "updatedAt": "2026-11-11T11:19:10.414Z",
+  "databaseFilePath": "/app/applet/data/safari_biotech_database.json"
+}

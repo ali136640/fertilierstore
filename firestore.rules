@@ -1,0 +1,186 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net (Default-deny catch-all)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidStoreSettings(data) {
+      return data.keys().hasAll(['workshopName', 'adminUsername', 'adminPassword'])
+        && data.keys().hasOnly([
+          'workshopName', 'appTagline', 'appLogoDataUrl', 'pwaAppName', 'pwaAppIconDataUrl', 'useLogoAsInvoiceSeal',
+          'enableInvoiceSeal', 'invoiceSealMode', 'invoiceSealImageDataUrl', 'invoiceSealTitle', 'invoiceSealSubtitle', 'invoiceSealCode', 'invoiceSealColor',
+          'trustBadgeMode', 'trustBadgeImageDataUrl', 'trustBadgeTitle',
+          'managerFullName', 'managerTitle', 'managerPhone', 'managerEmail',
+          'managerLicenseCode', 'managerProvinceCity', 'managerAddress', 'managerBioNote',
+          'supportPhone', 'salesAdvisorName', 'agronomistName', 'agronomistPhone', 'agronomistTitle',
+          'workshopAddress', 'workingHours', 'adminUsername', 'adminPassword',
+          'minOrderNotice', 'storeHeroBadgeText', 'paymentTermsNotice', 'invoiceFooterNote',
+          'shippingSmallFee', 'shippingMediumBaseFee', 'shippingTonFee',
+          'freeShippingThresholdToman', 'enableCalculator', 'showStockCountToCustomers',
+          'coreAppVersion', 'coreUpdateSummary',
+          'lastSyncedAt', 'autoRealtimeSync', 'updatedAt', 'updatedAtMs'
+        ])
+        && data.workshopName is string && data.workshopName.size() <= 200
+        && data.adminUsername is string && data.adminUsername.size() <= 50
+        && data.adminPassword is string && data.adminPassword.size() <= 100
+        && (!('appTagline' in data) || (data.appTagline is string && data.appTagline.size() <= 200))
+        && (!('appLogoDataUrl' in data) || (data.appLogoDataUrl is string && data.appLogoDataUrl.size() <= 200000))
+        && (!('pwaAppName' in data) || (data.pwaAppName is string && data.pwaAppName.size() <= 60))
+        && (!('pwaAppIconDataUrl' in data) || (data.pwaAppIconDataUrl is string && data.pwaAppIconDataUrl.size() <= 200000))
+        && (!('useLogoAsInvoiceSeal' in data) || data.useLogoAsInvoiceSeal is bool)
+        && (!('enableInvoiceSeal' in data) || data.enableInvoiceSeal is bool)
+        && (!('invoiceSealMode' in data) || (data.invoiceSealMode is string && data.invoiceSealMode.size() <= 30))
+        && (!('invoiceSealImageDataUrl' in data) || (data.invoiceSealImageDataUrl is string && data.invoiceSealImageDataUrl.size() <= 200000))
+        && (!('invoiceSealTitle' in data) || (data.invoiceSealTitle is string && data.invoiceSealTitle.size() <= 150))
+        && (!('invoiceSealSubtitle' in data) || (data.invoiceSealSubtitle is string && data.invoiceSealSubtitle.size() <= 150))
+        && (!('invoiceSealCode' in data) || (data.invoiceSealCode is string && data.invoiceSealCode.size() <= 120))
+        && (!('invoiceSealColor' in data) || (data.invoiceSealColor is string && data.invoiceSealColor.size() <= 30))
+        && (!('trustBadgeMode' in data) || (data.trustBadgeMode is string && data.trustBadgeMode.size() <= 30))
+        && (!('trustBadgeImageDataUrl' in data) || (data.trustBadgeImageDataUrl is string && data.trustBadgeImageDataUrl.size() <= 200000))
+        && (!('trustBadgeTitle' in data) || (data.trustBadgeTitle is string && data.trustBadgeTitle.size() <= 150))
+        && (!('managerFullName' in data) || (data.managerFullName is string && data.managerFullName.size() <= 150))
+        && (!('managerTitle' in data) || (data.managerTitle is string && data.managerTitle.size() <= 150))
+        && (!('managerPhone' in data) || (data.managerPhone is string && data.managerPhone.size() <= 30))
+        && (!('managerEmail' in data) || (data.managerEmail is string && data.managerEmail.size() <= 120))
+        && (!('managerLicenseCode' in data) || (data.managerLicenseCode is string && data.managerLicenseCode.size() <= 120))
+        && (!('managerProvinceCity' in data) || (data.managerProvinceCity is string && data.managerProvinceCity.size() <= 120))
+        && (!('managerAddress' in data) || (data.managerAddress is string && data.managerAddress.size() <= 350))
+        && (!('managerBioNote' in data) || (data.managerBioNote is string && data.managerBioNote.size() <= 350))
+        && (!('supportPhone' in data) || (data.supportPhone is string && data.supportPhone.size() <= 30))
+        && (!('salesAdvisorName' in data) || (data.salesAdvisorName is string && data.salesAdvisorName.size() <= 100))
+        && (!('agronomistName' in data) || (data.agronomistName is string && data.agronomistName.size() <= 100))
+        && (!('agronomistPhone' in data) || (data.agronomistPhone is string && data.agronomistPhone.size() <= 30))
+        && (!('agronomistTitle' in data) || (data.agronomistTitle is string && data.agronomistTitle.size() <= 150))
+        && (!('workshopAddress' in data) || (data.workshopAddress is string && data.workshopAddress.size() <= 350))
+        && (!('workingHours' in data) || (data.workingHours is string && data.workingHours.size() <= 150))
+        && (!('minOrderNotice' in data) || (data.minOrderNotice is string && data.minOrderNotice.size() <= 500))
+        && (!('storeHeroBadgeText' in data) || (data.storeHeroBadgeText is string && data.storeHeroBadgeText.size() <= 200))
+        && (!('paymentTermsNotice' in data) || (data.paymentTermsNotice is string && data.paymentTermsNotice.size() <= 500))
+        && (!('invoiceFooterNote' in data) || (data.invoiceFooterNote is string && data.invoiceFooterNote.size() <= 500))
+        && (!('shippingSmallFee' in data) || data.shippingSmallFee is number)
+        && (!('shippingMediumBaseFee' in data) || data.shippingMediumBaseFee is number)
+        && (!('shippingTonFee' in data) || data.shippingTonFee is number)
+        && (!('freeShippingThresholdToman' in data) || data.freeShippingThresholdToman is number)
+        && (!('enableCalculator' in data) || data.enableCalculator is bool)
+        && (!('showStockCountToCustomers' in data) || data.showStockCountToCustomers is bool)
+        && (!('coreAppVersion' in data) || (data.coreAppVersion is string && data.coreAppVersion.size() <= 40))
+        && (!('coreUpdateSummary' in data) || (data.coreUpdateSummary is string && data.coreUpdateSummary.size() <= 300));
+    }
+
+    function isValidProductCatalog(data) {
+      return data.keys().hasAll(['overrides'])
+        && data.keys().hasOnly(['overrides', 'updatedAt', 'updatedAtMs'])
+        && data.overrides is map;
+    }
+
+    function isValidOrder(data) {
+      return data.keys().hasAll(['orderNumber', 'customerName', 'phoneNumber', 'finalPayableToman', 'status'])
+        && data.orderNumber is string && data.orderNumber.size() <= 100
+        && data.customerName is string && data.customerName.size() <= 150
+        && data.phoneNumber is string && data.phoneNumber.size() <= 30
+        && data.finalPayableToman is number
+        && data.status is string && data.status.size() <= 50
+        && (!('adminNotes' in data) || (data.adminNotes is string && data.adminNotes.size() <= 1000))
+        && (!('trackingNumber' in data) || (data.trackingNumber is string && data.trackingNumber.size() <= 100))
+        && (!('deliveryAddress' in data) || (data.deliveryAddress is string && data.deliveryAddress.size() <= 500));
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['id', 'phoneNumber', 'fullName', 'role'])
+        && data.keys().hasOnly([
+          'id', 'username', 'phoneNumber', 'password', 'fullName', 'role',
+          'province', 'city', 'address', 'farmingType',
+          'telegramLinked', 'telegramUserId', 'telegramUsername', 'telegramFullName',
+          'createdAt', 'updatedAtMs'
+        ])
+        && data.id is string && data.id.size() <= 128
+        && data.phoneNumber is string && data.phoneNumber.size() <= 30
+        && data.fullName is string && data.fullName.size() <= 150
+        && data.role in ['customer', 'admin']
+        && (!('telegramLinked' in data) || data.telegramLinked is bool)
+        && (!('telegramUserId' in data) || (data.telegramUserId is string && data.telegramUserId.size() <= 40))
+        && (!('telegramUsername' in data) || (data.telegramUsername is string && data.telegramUsername.size() <= 80))
+        && (!('telegramFullName' in data) || (data.telegramFullName is string && data.telegramFullName.size() <= 150));
+    }
+
+    function isValidWorkshopState(data) {
+      return data.keys().hasAll(['config', 'signatories'])
+        && data.keys().hasOnly(['config', 'checklist', 'cycles', 'signatories', 'lastUpdated', 'updatedAtMs'])
+        && data.config is map
+        && data.signatories is map;
+    }
+
+    function isValidVoiceClip(data) {
+      return data.keys().hasAll(['id', 'kind', 'targetId', 'audioBase64', 'mimeType'])
+        && data.keys().hasOnly([
+          'id', 'kind', 'targetId', 'scriptText', 'audioBase64', 'mimeType', 'updatedAt', 'updatedAtMs'
+        ])
+        && data.id is string && data.id.size() <= 128
+        && data.kind in ['product', 'tip', 'weather']
+        && data.targetId is string && data.targetId.size() <= 128
+        && (!('scriptText' in data) || (data.scriptText is string && data.scriptText.size() <= 4000))
+        && data.audioBase64 is string && data.audioBase64.size() > 0 && data.audioBase64.size() <= 900000
+        && data.mimeType is string && data.mimeType.size() <= 40;
+    }
+
+    // 0. Boot Connection Test Document
+    match /test/{docId} {
+      allow get: if isValidId(docId);
+    }
+
+    // 1. Settings Collection
+    match /settings/{settingId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(settingId) && isValidStoreSettings(incoming());
+      allow delete: if false;
+    }
+
+    // 2. Products and Inventory Collection
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(productId) && isValidProductCatalog(incoming());
+      allow delete: if false;
+    }
+
+    // 3. Customer Orders Collection
+    match /orders/{orderId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(orderId) && isValidOrder(incoming());
+      allow delete: if isValidId(orderId);
+    }
+
+    // 4. User Accounts Collection
+    match /users/{userId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(userId) && isValidUser(incoming());
+      allow delete: if false;
+    }
+
+    // 5. Workshop Production & Formulation State
+    match /workshop/{stateId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(stateId) && isValidWorkshopState(incoming());
+      allow delete: if false;
+    }
+
+    // 6. Pre-generated Voice Clips Collection
+    match /voiceClips/{clipId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(clipId) && isValidVoiceClip(incoming());
+      allow delete: if isValidId(clipId);
+    }
+  }
+}

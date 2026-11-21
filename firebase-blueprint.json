@@ -1,0 +1,182 @@
+{
+  "entities": {
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Workshop and storefront configuration parameters stored in Firebase Firestore",
+      "type": "object",
+      "properties": {
+        "workshopName": { "type": "string", "maxLength": 200 },
+        "appTagline": { "type": "string", "maxLength": 200 },
+        "appLogoDataUrl": { "type": "string", "maxLength": 200000 },
+        "pwaAppName": { "type": "string", "maxLength": 60 },
+        "pwaAppIconDataUrl": { "type": "string", "maxLength": 200000 },
+        "useLogoAsInvoiceSeal": { "type": "boolean" },
+        "enableInvoiceSeal": { "type": "boolean" },
+        "invoiceSealMode": { "type": "string", "maxLength": 30 },
+        "invoiceSealImageDataUrl": { "type": "string", "maxLength": 200000 },
+        "invoiceSealTitle": { "type": "string", "maxLength": 150 },
+        "invoiceSealSubtitle": { "type": "string", "maxLength": 150 },
+        "invoiceSealCode": { "type": "string", "maxLength": 120 },
+        "invoiceSealColor": { "type": "string", "maxLength": 30 },
+        "trustBadgeMode": { "type": "string", "maxLength": 30 },
+        "trustBadgeImageDataUrl": { "type": "string", "maxLength": 200000 },
+        "trustBadgeTitle": { "type": "string", "maxLength": 150 },
+        "managerFullName": { "type": "string", "maxLength": 150 },
+        "managerTitle": { "type": "string", "maxLength": 150 },
+        "managerPhone": { "type": "string", "maxLength": 30 },
+        "managerEmail": { "type": "string", "maxLength": 120 },
+        "managerLicenseCode": { "type": "string", "maxLength": 120 },
+        "managerProvinceCity": { "type": "string", "maxLength": 120 },
+        "managerAddress": { "type": "string", "maxLength": 350 },
+        "managerBioNote": { "type": "string", "maxLength": 350 },
+        "supportPhone": { "type": "string", "maxLength": 30 },
+        "salesAdvisorName": { "type": "string", "maxLength": 100 },
+        "agronomistName": { "type": "string", "maxLength": 100 },
+        "agronomistPhone": { "type": "string", "maxLength": 30 },
+        "agronomistTitle": { "type": "string", "maxLength": 150 },
+        "workshopAddress": { "type": "string", "maxLength": 350 },
+        "workingHours": { "type": "string", "maxLength": 150 },
+        "adminUsername": { "type": "string", "maxLength": 50 },
+        "adminPassword": { "type": "string", "maxLength": 100 },
+        "minOrderNotice": { "type": "string", "maxLength": 500 },
+        "storeHeroBadgeText": { "type": "string", "maxLength": 200 },
+        "paymentTermsNotice": { "type": "string", "maxLength": 500 },
+        "invoiceFooterNote": { "type": "string", "maxLength": 500 },
+        "shippingSmallFee": { "type": "number" },
+        "shippingMediumBaseFee": { "type": "number" },
+        "shippingTonFee": { "type": "number" },
+        "freeShippingThresholdToman": { "type": "number" },
+        "enableCalculator": { "type": "boolean" },
+        "showStockCountToCustomers": { "type": "boolean" },
+        "coreAppVersion": { "type": "string", "maxLength": 40 },
+        "coreUpdateSummary": { "type": "string", "maxLength": 300 },
+        "lastSyncedAt": { "type": "string", "maxLength": 60 },
+        "autoRealtimeSync": { "type": "boolean" },
+        "updatedAt": { "type": "string", "maxLength": 60 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["workshopName", "adminUsername", "adminPassword"]
+    },
+    "ProductOverrideCatalog": {
+      "title": "ProductOverrideCatalog",
+      "description": "Realtime inventory quantity, price, and stock status overrides per product",
+      "type": "object",
+      "properties": {
+        "overrides": { "type": "object" },
+        "updatedAt": { "type": "string", "maxLength": 60 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["overrides"]
+    },
+    "CustomerOrder": {
+      "title": "CustomerOrder",
+      "description": "Customer order details, purchased items, status, and tracking",
+      "type": "object",
+      "properties": {
+        "orderNumber": { "type": "string", "maxLength": 100 },
+        "orderDate": { "type": "string", "maxLength": 50 },
+        "customerId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 150 },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "province": { "type": "string", "maxLength": 50 },
+        "city": { "type": "string", "maxLength": 50 },
+        "deliveryAddress": { "type": "string", "maxLength": 500 },
+        "farmingType": { "type": "string", "maxLength": 50 },
+        "deliveryMethod": { "type": "string", "maxLength": 50 },
+        "items": { "type": "array" },
+        "totalWeightKg": { "type": "number" },
+        "subtotalToman": { "type": "number" },
+        "discountToman": { "type": "number" },
+        "shippingEstimateToman": { "type": "number" },
+        "finalPayableToman": { "type": "number" },
+        "orderNotes": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "maxLength": 50 },
+        "adminNotes": { "type": "string", "maxLength": 1000 },
+        "trackingNumber": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string", "maxLength": 60 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["orderNumber", "customerName", "phoneNumber", "finalPayableToman", "status"]
+    },
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "Registered buyer or admin account profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "username": { "type": "string", "maxLength": 50 },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "password": { "type": "string", "maxLength": 100 },
+        "fullName": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "maxLength": 20 },
+        "province": { "type": "string", "maxLength": 50 },
+        "city": { "type": "string", "maxLength": 50 },
+        "address": { "type": "string", "maxLength": 500 },
+        "farmingType": { "type": "string", "maxLength": 50 },
+        "telegramLinked": { "type": "boolean" },
+        "telegramUserId": { "type": "string", "maxLength": 40 },
+        "telegramUsername": { "type": "string", "maxLength": 80 },
+        "telegramFullName": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "phoneNumber", "fullName", "role"]
+    },
+    "WorkshopState": {
+      "title": "WorkshopState",
+      "description": "Workshop production formulation batch config, checklist, cycles, and signatories",
+      "type": "object",
+      "properties": {
+        "config": { "type": "object" },
+        "checklist": { "type": "object" },
+        "cycles": { "type": "array" },
+        "signatories": { "type": "object" },
+        "lastUpdated": { "type": "string", "maxLength": 60 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["config", "signatories"]
+    },
+    "VoiceClip": {
+      "title": "VoiceClip",
+      "description": "Pre-generated audio clips for products, golden tips, and weather advisories stored individually under 1MB",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "kind": { "type": "string", "maxLength": 20, "enum": ["product", "tip", "weather"] },
+        "targetId": { "type": "string", "maxLength": 128 },
+        "scriptText": { "type": "string", "maxLength": 4000 },
+        "audioBase64": { "type": "string", "maxLength": 900000 },
+        "mimeType": { "type": "string", "maxLength": 40 },
+        "updatedAt": { "type": "string", "maxLength": 60 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "kind", "targetId", "audioBase64", "mimeType"]
+    }
+  },
+  "firestore": {
+    "/settings/{settingId}": {
+      "schema": "StoreSettings",
+      "description": "Store and workshop settings documents"
+    },
+    "/products/{productId}": {
+      "schema": "ProductOverrideCatalog",
+      "description": "Product overrides and real-time inventory control"
+    },
+    "/orders/{orderId}": {
+      "schema": "CustomerOrder",
+      "description": "Customer orders placed online"
+    },
+    "/users/{userId}": {
+      "schema": "UserAccount",
+      "description": "User profiles for buyers and store administrators"
+    },
+    "/workshop/{stateId}": {
+      "schema": "WorkshopState",
+      "description": "Production & formulation state synchronized across devices"
+    },
+    "/voiceClips/{clipId}": {
+      "schema": "VoiceClip",
+      "description": "Pre-generated compressed audio clips for instant customer playback"
+    }
+  }
+}

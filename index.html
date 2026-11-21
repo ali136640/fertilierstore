@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>گروه تولیدی و زیست فناوری مهندس صفری | فروشگاه آنلاین و سامانه کارگاهی تولید فرآورده‌های زیستی</title>
+    <meta name="description" content="فروشگاه آنلاین خرید مستقیم ورمیکمپوست درجه ۱ صادراتی، کود کمپوست سنتی، عصاره ورمی‌تی مایع و سامانه هوشمند فرمولاسیون زیست‌فناوری مهندس صفری" />
+    <meta property="og:title" content="گروه تولیدی و زیست فناوری مهندس صفری | فروشگاه آنلاین و سامانه کارگاهی" />
+    <meta property="og:description" content="فروشگاه آنلاین خرید مستقیم ورمیکمپوست درجه ۱ صادراتی، کود کمپوست سنتی، عصاره ورمی‌تی مایع و سامانه هوشمند فرمولاسیون زیست‌فناوری مهندس صفری" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#064e3b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ورمیکمپوست" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      (function () {
+        try {
+          var mode = localStorage.getItem('safari_theme_mode_v1');
+          var prefersDark =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = mode === 'dark' ? true : mode === 'light' ? false : prefersDark;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 antialiased selection:bg-emerald-500/20 selection:text-emerald-900 dark:selection:text-emerald-200 transition-colors">
+    <div id="root"></div>
+    <noscript>
+      <div style="padding:24px;text-align:center;font-family:sans-serif;direction:rtl;">
+        برای مشاهده فروشگاه آنلاین، لطفاً جاوااسکریپت مرورگر خود را فعال کنید.
+      </div>
+    </noscript>
+    <script>
+      (function () {
+        var timer = setTimeout(function () {
+          var root = document.getElementById('root');
+          if (!root || root.childElementCount > 0) return;
+          var isGh = /github\.io$/i.test(window.location.hostname || '');
+          var hasRawSrc = !!document.querySelector('script[src="/src/main.tsx"]');
+          var msg = isGh && hasRawSrc
+            ? 'در تنظیمات GitHub Repository > Settings > Pages، گزینه Source را از شاخه main روی «GitHub Actions» (یا شاخه gh-pages) قرار دهید.'
+            : 'در حال آماده‌سازی یا مشکل در بارگذاری فایل‌های برنامه. در صورت استفاده از GitHub Pages مطمئن شوید بیلد Actions تکمیل شده است.';
+          root.innerHTML =
+            '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:Vazirmatn,Tahoma,sans-serif;direction:rtl;background:#fafaf9;color:#1c1917">' +
+            '<div style="max-width:440px;width:100%;background:#fff;border:1px solid #e7e5e4;border-radius:20px;padding:24px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.06)">' +
+            '<div style="font-size:28px;margin-bottom:8px">🌿</div>' +
+            '<h2 style="font-size:15px;font-weight:700;margin:0 0 8px">بارگذاری فروشگاه کامل نشد</h2>' +
+            '<p style="font-size:12px;line-height:1.8;color:#57534e;margin:0 0 16px">' + msg + '</p>' +
+            '<button onclick="if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.unregister()})})}setTimeout(function(){location.reload()},200)" style="background:#065f46;color:#fff;border:none;border-radius:12px;padding:10px 18px;font-size:12px;font-weight:700;cursor:pointer">پاکسازی کش و تلاش مجدد</button>' +
+            '</div></div>';
+        }, 6500);
+        window.__clearMountWatchdog = function () { clearTimeout(timer); };
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

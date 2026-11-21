@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="worm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <linearGradient id="granule" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background with Safe Padding for Maskable Icons -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  
+  <!-- Central Emblem Inside 80% Safe Zone -->
+  <g transform="translate(256, 256)">
+    <!-- Soil Bed Earth Arch -->
+    <path d="M -160,80 Q 0,160 160,80 C 130,140 -130,140 -160,80 Z" fill="#1c1917" opacity="0.8"/>
+    
+    <!-- Organic Plant Leaf -->
+    <path d="M 0,-150 C 70,-150 140,-80 140,20 C 140,80 80,120 0,140 C -80,120 -140,80 -140,20 C -140,-80 -70,-150 0,-150 Z" fill="url(#leaf)" opacity="0.95"/>
+    <path d="M 0,-130 Q 20,0 0,130" stroke="#064e3b" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+    <!-- Red Wiggler (Eisenia fetida) Biological S-Curve -->
+    <path d="M -90,-20 Q -40,-90 10,-40 Q 60,10 110,-40" stroke="url(#worm)" stroke-width="26" stroke-linecap="round" fill="none"/>
+    <circle cx="112" cy="-42" r="14" fill="#fb7185"/>
+
+    <!-- High-grade Tea Granules & Mineral Zeolite Crystals -->
+    <circle cx="-50" cy="70" r="16" fill="url(#granule)"/>
+    <circle cx="45" cy="80" r="14" fill="url(#granule)"/>
+    <circle cx="0" cy="95" r="18" fill="url(#granule)"/>
+    <circle cx="-95" cy="50" r="12" fill="#38bdf8"/>
+    <circle cx="95" cy="55" r="12" fill="#f8fafc"/>
+  </g>
+</svg>
